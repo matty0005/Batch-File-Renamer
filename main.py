@@ -119,43 +119,45 @@ def main():
             except:
                 pass
             if ep_num == None:
-                print("Can't determine episode number. Exiting...")
-                return
+                print("Can't determine episode number.")
+                
                
 
+        if ep_num != None:
 
-        pre_name = prefix + " - EP " + ep_num + ".{0}".format(file_extention)
+            pre_name = prefix + " - EP " + ep_num + ".{0}".format(file_extention)
 
-        #Prompt the user if this is name is good
-        if not responded_all:
-            response = "T"
-            while response.upper() not in ["Q", "Y", "N", "A"]:
-                print("Is '{0}' a suitable filename? (Y[es], N[o], A[ll], Q[uit])".format(pre_name))
-                response = input("> ")
-
-            if response.upper() == "Q":
-                print("Exiting...")
-                return
-
-            if response.upper() == "N":
-                while response.upper() != "Y":
-                    print("Please manually enter a filename with file extension")
-                    filename = input("> ")
-                    print("Is '{0}' the correct filename? (Y[es], N[o]".format(filename))
+            #Prompt the user if this is name is good
+            if not responded_all:
+                response = "T"
+                while response.upper() not in ["Q", "Y", "N", "A"]:
+                    print("Is '{0}' a suitable filename? (Y[es], N[o], A[ll], Q[uit])".format(pre_name))
                     response = input("> ")
 
-            if response.upper() == "A":
-                responded_all = True
+                if response.upper() == "Q":
+                    print("Exiting...")
+                    return
 
-        filename = pre_name
+                if response.upper() == "N":
+                    while response.upper() != "Y":
+                        print("Please manually enter a filename with file extension")
+                        filename = input("> ")
+                        print("Is '{0}' the correct filename? (Y[es], N[o]".format(filename))
+                        response = input("> ")
 
-        #Rename the filename
-        print(os.path.dirname(item.path) + "\\" + filename)
-        os.rename(item.path, os.path.dirname(item.path) + "\\" + filename)
+                if response.upper() == "A":
+                    responded_all = True
+
+            filename = pre_name
+
+            #Rename the filename
+            print(os.path.dirname(item.path) + "\\" + filename)
+            os.rename(item.path, os.path.dirname(item.path) + "\\" + filename)
 
 
 
 if __name__ == '__main__':
     main()
+
 
 
