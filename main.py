@@ -1,5 +1,4 @@
 import os
-import shutil
 import argparse
 
 parser = argparse.ArgumentParser(description="Rename a bunch of files")
