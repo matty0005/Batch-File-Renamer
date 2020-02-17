@@ -118,8 +118,8 @@ def main():
                 ep_num = element
             except:
                 pass
-            if ep_num == None:
-                print("Can't determine episode number.")
+        if ep_num == None:
+            print("Can't determine episode number.")
                 
                
 
